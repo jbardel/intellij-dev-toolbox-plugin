@@ -1,4 +1,4 @@
-package com.github.jbardel.intellijdevtoolboxplugin
+package jbardel.devtoolboxplugin
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls

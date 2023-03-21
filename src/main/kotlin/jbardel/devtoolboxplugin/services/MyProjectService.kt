@@ -1,9 +1,9 @@
-package com.github.jbardel.intellijdevtoolboxplugin.services
+package jbardel.devtoolboxplugin.services
 
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project
-import com.github.jbardel.intellijdevtoolboxplugin.MyBundle
+import jbardel.devtoolboxplugin.MyBundle
 
 @Service(Service.Level.PROJECT)
 class MyProjectService(project: Project) {

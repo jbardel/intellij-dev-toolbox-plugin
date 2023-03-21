@@ -1,4 +1,4 @@
-package com.github.jbardel.intellijdevtoolboxplugin.listeners
+package jbardel.devtoolboxplugin.listeners
 
 import com.intellij.ide.FrameStateListener
 import com.intellij.openapi.diagnostic.thisLogger
