@@ -5,9 +5,11 @@ import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.wm.ToolWindow
 import com.intellij.openapi.wm.ToolWindowFactory
-import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.JBPanel
+import com.intellij.ui.components.JBTextArea
 import com.intellij.ui.content.ContentFactory
+import com.intellij.ui.dsl.gridLayout.GridLayout
+import com.intellij.util.ui.components.BorderLayoutPanel
 import jbardel.devtoolboxplugin.MyBundle
 import jbardel.devtoolboxplugin.services.MyProjectService
 import javax.swing.JButton
@@ -33,15 +35,22 @@ class MyToolWindowFactory : ToolWindowFactory {
 
         private val service = toolWindow.project.service<MyProjectService>()
 
-        fun getContent() = JBPanel<JBPanel<*>>().apply {
-            val label = JBLabel(MyBundle.message("randomLabel", "?"))
+        fun getContent() = BorderLayoutPanel().apply {
+//            val label = JBLabel(MyBundle.message("randomLabel", "?"))
+            val decodedJBTextArea = JBTextArea("Test")
+            val encodedJBTextArea = JBTextArea("Test 2")
 
-            add(label)
-            add(JButton(MyBundle.message("shuffle")).apply {
-                addActionListener {
-                    label.text = MyBundle.message("randomLabel", service.getRandomNumber())
+            val buttons = JBPanel<JBPanel<*>>().apply {
+                val decode = JButton("Decode").apply {
+                    addActionListener {
+                        encodedJBTextArea.text = MyBundle.message("randomLabel", service.getRandomNumber())
+                    }
                 }
-            })
+                add(decode)
+            }
+            addToTop(decodedJBTextArea)
+            addToCenter(buttons)
+            addToBottom(encodedJBTextArea)
         }
     }
 }
