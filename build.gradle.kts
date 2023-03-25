@@ -27,6 +27,16 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+
+//    implementation("com.github.kittinunf.fuel:fuel:2.3.1")
+    testImplementation(kotlin("test"))
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
+
 // Set the JVM language level used to build the project. Use Java 11 for 2020.3+, and Java 17 for 2022.2+.
 kotlin {
     jvmToolchain(11)
